@@ -110,7 +110,7 @@ class _TooltipLayout extends StatelessWidget {
     var targetRightBottomGlobalPaintBounds = model.widgetKey.globalPaintBounds!.bottomRight;
 
     // 16은 up down horizontal padding 값
-    final windowWidthGap = kIsWeb ? ((targetRightBottomGlobalPaintBounds.dx - MediaQuery.of(context).size.width) + 16) : 0;
+    final windowWidthGap = kIsWeb ? ((targetRightBottomGlobalPaintBounds.dx - MediaQuery.of(context).size.width) + model.margin) : 0;
 
     var topLeft = Offset(targetLeftTopGlobalPaintBounds.dx - windowWidthGap, targetLeftTopGlobalPaintBounds.dy);
     var bottomRight = Offset(targetRightBottomGlobalPaintBounds.dx - windowWidthGap, targetRightBottomGlobalPaintBounds.dy);
