@@ -85,6 +85,9 @@ class OverlayTooltipItem extends OverlayTooltipItemImpl {
   /// This determines the order of display when overlay is started
   final int displayIndex;
 
+  // 추가된 내용
+  final double margin;
+
   OverlayTooltipItem(
       {Key? key,
       this.absorbPointer = true,
@@ -92,7 +95,8 @@ class OverlayTooltipItem extends OverlayTooltipItemImpl {
       required this.child,
       required this.tooltip,
       this.tooltipVerticalPosition = TooltipVerticalPosition.BOTTOM,
-      this.tooltipHorizontalPosition = TooltipHorizontalPosition.WITH_WIDGET})
+      this.tooltipHorizontalPosition = TooltipHorizontalPosition.WITH_WIDGET,
+      this.margin = 0.0})
       : super(
             key: key,
             absorbPointer: absorbPointer,
@@ -100,5 +104,6 @@ class OverlayTooltipItem extends OverlayTooltipItemImpl {
             displayIndex: displayIndex,
             tooltip: tooltip,
             tooltipVerticalPosition: tooltipVerticalPosition,
-            tooltipHorizontalPosition: tooltipHorizontalPosition);
+            tooltipHorizontalPosition: tooltipHorizontalPosition,
+            margin: margin);
 }
