@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:overlay_tooltip/src/constants/enums.dart';
 import 'package:overlay_tooltip/src/model/tooltip_widget_model.dart';
@@ -105,8 +106,14 @@ class _TooltipLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var topLeft = model.widgetKey.globalPaintBounds!.topLeft;
-    var bottomRight = model.widgetKey.globalPaintBounds!.bottomRight;
+    var targetLeftTopGlobalPaintBounds = model.widgetKey.globalPaintBounds!.topLeft;
+    var targetRightBottomGlobalPaintBounds = model.widgetKey.globalPaintBounds!.bottomRight;
+
+    // 16은 up down horizontal padding 값
+    final windowWidthGap = kIsWeb ? ((targetRightBottomGlobalPaintBounds.dx - MediaQuery.of(context).size.width) + 16) : 0;
+
+    var topLeft = Offset(targetLeftTopGlobalPaintBounds.dx - windowWidthGap, targetLeftTopGlobalPaintBounds.dy);
+    var bottomRight = Offset(targetRightBottomGlobalPaintBounds.dx - windowWidthGap, targetRightBottomGlobalPaintBounds.dy);
 
     return LayoutBuilder(builder: (context, size) {
       if (topLeft.dx < 0) {
