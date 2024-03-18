@@ -10,6 +10,7 @@ abstract class OverlayTooltipItemImpl extends StatefulWidget {
   final TooltipVerticalPosition tooltipVerticalPosition;
   final TooltipHorizontalPosition tooltipHorizontalPosition;
   final int displayIndex;
+  double margin;
 
   OverlayTooltipItemImpl(
       {Key? key,
@@ -18,7 +19,8 @@ abstract class OverlayTooltipItemImpl extends StatefulWidget {
       required this.child,
       required this.tooltip,
       required this.tooltipVerticalPosition,
-      required this.tooltipHorizontalPosition})
+      required this.tooltipHorizontalPosition,
+        this.margin = 0.0})
       : super(key: key);
 
   @override
@@ -51,7 +53,8 @@ class _OverlayTooltipItemImplState extends State<OverlayTooltipItemImpl> {
                 widgetKey: widgetKey,
                 vertPosition: widget.tooltipVerticalPosition,
                 horPosition: widget.tooltipHorizontalPosition,
-                displayIndex: widget.displayIndex));
+                displayIndex: widget.displayIndex,
+                margin: widget.margin));
       } catch (e) {
         print(e);
       }
